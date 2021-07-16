@@ -39,19 +39,24 @@ We are going to run a couple SQL queries and put the answers in the "Query Respo
 ## Query Responses
 
 1. Sums
-  * AK:
-  * CT
-  * TX:
-  * WY:
+  * AK: 1422
+  * CT: 999
+  * TX: 7908
+  * WY: 1271
+  SELECT SUM(user_id), state FROM usersAddress GROUP BY state
 
 2.
-  * Area code:
+  * Area code: 973
+  SELECT SUBSTR(phone1, 1, 3), COUNT(*)
+ FROM usersContact GROUP BY SUBSTR(phone1, 1, 3)
 
 3.
-  * first_name:
-  * county:
-  * county total:
-
+  * first_name: Avery
+  * county: Orange
+  * county total: 11
+SELECT MIN(first_name),county, COUNT(*) AS tally
+ FROM users INNER JOIN usersAddress ON users.id = usersAddress.id
+ GROUP BY county HAVING tally > 10
 
 ## Summary
 
